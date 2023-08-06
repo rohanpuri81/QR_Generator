@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR coge generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+       }
+       body{
+        background-color: navy
+       }
+       .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 60%;
+        position: relative;
+        left: 20%;
+        bottom:20%;
+        border-radius: 10px;
+        background-color: rgb(8, 91, 168);
+       }
+       .form{
+        display: flex;
+        width: 500px;
+        top: 200px;
+        flex-direction: column;
+       }
+       #btn{
+        width: 300px;
+        height: 34px;
+        background-color: aliceblue;
+       
+        margin-bottom: 30px;
+        border-radius: 5px;
+       }
+       #inpText{
+        border: none;
+        width: 300px;
+        margin: 20px 0;
+        height: 34px;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="main" id="main">
+        <div id="form">
+            <input id="inpText" type="text">
+            <br>
+            <button id="btn">Generate QR Code</button>
+            <br>
+            <img id="img">
+        </div>
+    </div>
+    <script>
+        let btn = document.getElementById("btn");
+        
+
+        btn.addEventListener("click",()=>{
+            let text= document.getElementById("inpText");
+            let img = document.createElement("img");
+            let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text}`;
+            img.src=url;
+            let main = document.getElementById("main");
+            // main.removeChild(img);
+            main.appendChild(img);
+        });
+
+    </script>
+</body>
+</html>
